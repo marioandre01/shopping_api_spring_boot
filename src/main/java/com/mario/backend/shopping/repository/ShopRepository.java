@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.mario.backend.shopping.model.Shop;
 
 @Repository
-public interface ShopRepository extends JpaRepository<Shop, Long>{
+public interface ShopRepository extends JpaRepository<Shop, Long>, ReportRepository {
 	
 //	recupera todas as compras de um usuário específico
 	public List<Shop> findAllByUserIdentifier(String userIdentifier);
@@ -25,3 +25,12 @@ public interface ShopRepository extends JpaRepository<Shop, Long>{
 // o findAll , indica que a busca será por um ou mais resultados
 // o By{Atributo} , que indica por qual atributo será feita a busca
 // o GreaterThan , que faz um filtro de apenas valores maiores do que o passado como parâmetro serão buscados
+
+// adicionardo um extends para essa a interface "ReportRepository". Isso serve para que os métodos que serão implementados as 
+// consultas possam ser injetados sempre que se utilizar a "ShopRepository"
+
+
+
+
+
+

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mario.backend.shopping.dto.ShopDTO;
+import com.mario.backend.shopping.dto.ShopReportDTO;
 import com.mario.backend.shopping.model.Shop;
 import com.mario.backend.shopping.repository.ShopRepository;
 
@@ -17,6 +18,7 @@ public class ShopService {
 	
 	@Autowired
 	private ShopRepository shopRepository;
+	
 	
 	public List<ShopDTO> getAll() {
 		
@@ -72,6 +74,18 @@ public class ShopService {
 		shop = shopRepository.save(shop);
 		
 		return ShopDTO.convertToShopDTO(shop);
+	}
+	
+	public List<ShopDTO> getShopsByFilter(Date dataInicio, Date dataFim, Float valorMinimo) {
+		
+		List<Shop> shops = shopRepository.getShopByFilters(dataInicio, dataFim, valorMinimo);
+		
+		return shops.stream().map(ShopDTO::convertToShopDTO).collect(Collectors.toList());
+	}
+	
+	public ShopReportDTO getReportByDate(Date dataInicio, Date dataFim) {
+		
+		return shopRepository.getReportByDate(dataInicio, dataFim);
 	}
 	
 }

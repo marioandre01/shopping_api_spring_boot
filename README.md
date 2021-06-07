@@ -286,7 +286,67 @@ Agora acessar as rotas da API para usar os seus serviços. Para acessar as rotas
     }
   ]
   ```
-  Se colocar um Cpf que não esta cadastrado vai retorna **Null**
+
+- get-shoppingSearch
+
+  [GET] `http://localhost:8082/shopping/search?dataInicio=01/01/2020&dataFim=01/01/2022&valorMinimo=250`
+   #### Resposta:
+  ```bash   
+  [
+    {
+      "userIdentifier": "Mario",
+      "total": 69.0,
+      "date": "2021-06-07T12:05:29.437+00:00",
+      "items": [
+        {
+          "productIdentifier": "h1",
+          "price": 10.0
+        },
+        {
+          "productIdentifier": "h2",
+          "price": 9.0
+        },
+        {
+          "productIdentifier": "h3",
+          "price": 50.0
+        }
+      ]
+    },
+    {
+      "userIdentifier": "Mario",
+      "total": 80.0,
+      "date": "2021-06-07T12:15:12.421+00:00",
+      "items": [
+        {
+          "productIdentifier": "i1",
+          "price": 10.0
+        },
+        {
+          "productIdentifier": "i2",
+          "price": 20.0
+        },
+        {
+          "productIdentifier": "i3",
+          "price": 50.0
+        }
+      ]
+    }
+  ]
+  ```
+
+  - get-shoppingReport
+
+  [GET] `http://localhost:8082/shopping/report?dataInicio=01/01/2020&dataFim=01/07/2021`
+   #### Resposta:
+  ```bash   
+  [
+    {
+      "count": 3,
+      "total": 837.0,
+      "mean": 279.0
+    }
+  ]
+  ```
 
 ### Rota POST
 - post-shopping
